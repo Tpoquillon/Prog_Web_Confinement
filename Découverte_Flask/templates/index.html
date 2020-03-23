@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mt-5">BioInfo 4A Web development</h1>
+  <p class="lead">An introduction to web development with <a
+  href="https://www.python.org">Python3</a> &amp; <a
+  href="http://flask.pocoo.org/docs/1.0/quickstart/">Flask</a> micro framework
+  (and <a href="https://getbootstrap.com/">bootstrap</a>)</p>
+  <article id="intro" class="to_hide">
+    <div><hr /></div>
+    <h2 class="nocount">Get the sources</h2>
+      <div class="alert alert-primary" role="alert">
+        <h4 class="nocount"><a href="https://forge.p2chpd.univ-lyon1.fr/geoffroy.berret/PrograWebSources" class="font-weight-bold">forge.p2chpd.univ-lyon1.fr/geoffroy.berret/PrograWebSources</a></h4>
+        <h4 class="nocount"><code class="font-weight-bold">git clone https://forge.p2chpd.univ-lyon1.fr/geoffroy.berret/PrograWebSources.git</code></h4>
+      </div>
+    <h2 class=nocount>Then setup the environment</h2>
+      <p>Open a terminal an run the following commands:<br />
+      <pre class="text-monospace"><code>cd Découverte_Flask && ./do
+./do serve</code></pre>
+      <p>Then you can access the server in your browser at: <a href="http://localhost:8000/">http://localhost:8000/</a></p>
+      <p>You also have access to a python shell to explore your code and Flask objects: <code>./do shell</code></p>
+  </article>
+  <hr />
+
+  <ul>
+    <li><a href="{{url_for('flaskintro')}}">Flask introduction</a></li>
+    <li><a href="{{url_for('indexapi')}}">Building API endpoints</a></li>
+  </ul>
+
+
+{% endblock %}
+
+<!-- vim: set filetype=html spell spelllang=en: -->

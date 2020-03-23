@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mt-5">{{user["name"]}}</h1>
+      <ul>
+        {% for key in user.keys() %}
+          {% if key!='id' %}
+          <li> {{key}} : {{user[key]}} </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+{% endblock %}

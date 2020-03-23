@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mt-5">An introduction to <a
+  href="http://flask.pocoo.org/docs/1.0/quickstart/">Flask</a> micro framework
+  (with <a href="https://getbootstrap.com/">bootstrap</a>)</h1>
+  <p class="lead">All along these exercises you can control the expected
+  results using the web browser dev console or the unix shell commands
+  wget/curl.</p>
+  <p class="lead">When possible, expected outputs are shown using
+  <code>curl</code>, click <a href="#" id="globaltoggle"
+                                       onclick="$('pre.solution').collapse('show')">show</a>
+  to reveal output (<a href="#" onclick="$('pre.solution').collapse('hide')">hide</a> all).</p>
+  <hr />
+
+  <article>
+    <h2>Hello World</h2>
+    <h3>Return "hello world" in another language.</h3>
+    <p>Locate function responsible for the "<a class="text-monospace" href="{{ url_for('hello_world') }}">hello world</a>" page in <code>app.py</code>
+    and change response body.</p>
+    <p><a href="#l10nhello" data-toggle="collapse">show</a> expected output using curl:</p>
+    <div class="solblock">
+      <pre><code class="bash">curl --include --request GET http://localhost:8000/hello_world</code></pre>
+      <pre class="solution collapse" id="l10nhello">HTTP/1.0 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: 12
+Server: Werkzeug/0.16.0 Python/3.7.3
+Date: Thu, 28 Nov 2019 15:05:11 GMT
+
+Hola mundo!                           <----- "hello world" in another language</pre>
+    </div>
+    <h3>Return different HTTP codes, 404, 500, 800</h3>
+    <p>Change the HTTP status code returned for the "<a class="text-monospace" href="{{ url_for('hello_world') }}">hello world</a>" end point.</p>
+    <p>Control using the same <code>curl</code> command.</p>
+    <p><a href="#hellostatuscode" data-toggle="collapse">show</a> expected output using curl:</p>
+    <div class="solblock">
+      <pre><code class="bash">curl --head http://localhost:8000/hello_world</code></pre>
+      <pre class="solution collapse" id="hellostatuscode">HTTP/1.0 800 UNKNOWN       <----- Status code is there
+Content-Type: text/html; charset=utf-8
+Content-Length: 12
+Server: Werkzeug/0.16.0 Python/3.7.3
+Date: Thu, 28 Nov 2019 15:05:11 GMT</pre>
+    </div>
+    <p>What do you notice? Does the code affect the <a href="{{ url_for('hello_world') }}">page rendering</a> in a regular browser?</p>
+
+    <h3>Add new HTTP headers to <span class="font-weight-bold"><a href="{{ url_for('hello_world') }}">hello world</a> response</span></h3>
+    <p>Instantiate an <a href="https://flask.palletsprojects.com/en/1.1.x/api/#response-objects">Response</a> object with <a
+                         href="https://flask.palletsprojects.com/en/1.1.x/api/?highlight=make_response#flask.make_response">make_response</a>.<br />
+    <strong>Hint!</strong> No need for template for now, you can simply call <code>make_response("Hello World")</code> .</p>
+    <p>→ Add the following headers:</p>
+    <ul>
+      <li>Media type header: <span class="font-weight-bold">
+          <code><a href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Type">Content-Type</a>: text/plain; charset=utf-8</code></span>
+      </li>
+      <li>Content language header:  <span class="font-weight-bold">
+          <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Headers/Content-Language">content-language</a></span>
+      </li>
+      <li>Non standard header, choice is yours</li>
+    </ul>
+    <p><a href="#addheaders" data-toggle="collapse">show</a> expected output using <code>curl</code>:</p>
+    <div class="solblock">
+      <pre><code class="bash">curl --head http://localhost:8000/hello_world</code></pre>
+      <pre class="solution collapse" id="addheaders">HTTP/1.0 200 OK
+Content-Type: text/plain                 <----- Media type header
+Content-Language: en                     <----- Content language header
+Content-Length: 13
+X-Less: Is More                          <----- Non standard header
+Server: Werkzeug/0.16.0 Python/3.7.3
+Date: Thu, 28 Nov 2019 15:29:40 GMT</pre>
+    </div>
+    <h3>Explore request to build a response accordingly</h3>
+    <p>An HTTP client (curl or firefox) can provide an <code>Accept-Language</code>
+    header with a preferred language setting. The server then uses it and
+    informs the client of its choice with the <code>Content-Language</code> response
+    header (<a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Headers/Accept-Language">learn more</a> about it).</p>
+    <p>→ Serve a <a href="https://en.wikipedia.org/wiki/Language_localisation">localized</a>
+    <a href="{{ url_for('hello_world') }}">"hello world"</a> respecting the provided <code>Accept-Language</code>
+    request headers.<br/>
+    Use languages of your choice among langages defined in <code>app.HELLO_STRINGS</code> object in <code>app.py</code>.<br />
+    Falls back to English if not translated.</p>
+    <p>Then control both response <strong>headers</strong> and <strong>body</strong>:</p>
+    <pre>curl -H"Accept-Language: LANG" http://localhost:8000/hello_world</pre>
+    <p><a href="#contentnego" data-toggle="collapse">show</a> expected output using <code>curl</code>:</p>
+    <div class="solblock">
+      <pre><code class="bash">curl -i --header "Accept-Language: cn" http://localhost:8000/hello_world</code></pre>
+      <pre class="solution collapse" id="contentnego">HTTP/1.0 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Language: cn                   <------ header set according to language use in the body
+Content-Length: 13
+Server: Werkzeug/0.16.0 Python/3.7.3
+Date: Thu, 28 Nov 2019 15:05:11 GMT
+
+你好世界                               <--------- "Hello world" translation (>> app.HELLO_STRINGS['cn'])</pre>
+    </div>
+
+    <h2>Templates</h2>
+    <p>Read at least the <a href="http://jinja.pocoo.org/docs/2.10/templates/#synopsis">"Synopsis"</a>
+    &amp; <a href="https://jinja.palletsprojects.com/en/2.10.x/templates/#variables">variables"</a> on Jinja template engine quick start page.</p>
+    <h3>Explore About page code/template</h3>
+    <ul>
+      <li>Look at the structure of "<em>templates/about.html</em>" template.</li>
+      <li>Locate how <code>date</code> template variable is exposed to the template in <code>app.py</code>.</li>
+      <li>Where does the top menu (help/Users/About/etc…) come from?<br/>
+        cf. <a href="https://jinja.palletsprojects.com/en/2.10.x/templates/#template-inheritance">Template Inheritance.</a></li>
+    </ul>
+
+    <h3><span class="font-italic">page title</span> on <a href="{{ url_for('about') }}">About page</a></h3>
+    <p>HTML page title comes from the <a href="https://developer.mozilla.org/docs/Web/HTML/Element/title">html&gt;head&gt;title</a> html attribute.<br />
+    <strong>title</strong> attribute content sets the actual title of the web browser tab/window.</p/>
+    <p>→ Find how it defaults to "BioInfo 4A Web dev Introdution" for each pages.</p>
+
+    <h3>Set title</h3>
+    <p>→ Set a different <span class="font-italic">page title</span> for the <a href="{{ url_for('about') }}">About page</a> only.<br />
+    <a href="https://flask.palletsprojects.com/en/1.1.x/quickstart/#rendering-templates">example: render_template</a>
+    </p>
+
+    <h2>List users</h2>
+    <p>A list of users is available in <code>data.py</code> (a plain pseudo SGDB mockup).<br />
+    Explore the data with the command line console:</p>
+    <div class="solblock">
+      <!--<pre>python3 -c'import app, pprint;pprint.pprint(app.USERS)'</pre>-->
+      <code>./do shell</code> (the user object in <code>app.USERS</code>)
+    </div>
+
+    <!--<p>→ Add a new menu to get to the users page: <a href="/users">users</a>.</p>-->
+    <p>The <strong>Users</strong> link at the top of this page (along with <em>help</em>, <em>about</em>, etc,…) show the users page: <a href="{{ url_for('users') }}">users</a>.</p>
+
+    <p>→ Modify <code>users</code> function in <code>app.py</code> and the template <code>templates/users.html</code> to format the user list.</p>
+    <p>Please refer to the template engine documentation online: <a href="http://jinja.pocoo.org/docs/2.10/templates/">jinja.pocoo.org/docs/2.10/templates/</a>
+
+    <h2>Setup the search page (users lookup)</h2>
+
+    <h3>Test searching input box, read logs and code</h3>
+    <p>Use the search box (top right of the page) to make some random search.</p>
+    <ul>
+      <li>What kind of HTTP request is done on the server?</li>
+      <li>How the search string is provided to the server (ie. which part of the request holds the search string)?</li>
+      <li>Where do <em>pattern</em> and <em>regexp</em> keys in the URL come from?</li>
+      <li>How would you perform a search using <code>curl</code>?</li>
+    </ul>
+
+    <p>To access the search pattern, refer to flask documentation about <a
+    href="https://flask.palletsprojects.com/en/1.1.x/quickstart/#the-request-object">Accessing Request Data</a></p>
+
+    <h3>Implement the <code>search</code> endpoint.</h3>
+    <p>→ Use the search button and input field (page top right) to search a user.</p>
+    <p class="font-italic">Hint: You can reuse the <code>users.html</code> template, KISS principle!</p>
+
+    <h2>Add a user to the list</h2>
+    <p>In the <a href="{{ url_for('users') }}">users</a> page add a form to add a new user.<p>
+    <p>Here are some docs about forms:</p>
+    <ul>
+      <li><a href="https://developer.mozilla.org/docs/Web/HTML/Element/Form">developer.mozilla.org/docs/Web/HTML/Element/Form</a></li>
+      <li><a href="https://www.w3schools.com/html/html_forms.asp">https://www.w3schools.com/html/html_forms.asp</a></li>
+    </ul>
+
+  </article>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+<!-- vim: set filetype=html spell spelllang=en: -->
