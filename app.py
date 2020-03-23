@@ -66,6 +66,12 @@ def about():
 def recherche():
   return render_template('recherche.html')
 
+
+@app.route('/search/', methods=['GET'])
+def search():
+  return render_template('stages.html') 
+
+
 @app.route('/Stages')
 def stages():
   return render_template('stages.html') 
