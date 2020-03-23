@@ -6,10 +6,10 @@
   </head>
   <body>
     <ul>
-      <li><a href="{{ url_for('index') }}#home">Home</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li style="float:right" ><a href="{{ url_for('about') }}">About</a></li>
+      <li><a href="{{ url_for('index') }}#home">Accueil</a></li>
+      <li><a href="{{ url_for('stages') }}">Stages</a></li>
+      <li><a href="{{ url_for('about') }}">A Propos</a></li>
+      <li style="float:right" ><a href="{{ url_for('recherche') }}">Recherche</a></li>
     </ul>
 
 {% block content %}{% endblock %}

@@ -62,6 +62,15 @@ def about():
     app.logger.debug('About Context: {}'.format(tpl_context))
     return render_template('about.html', context=tpl_context)
 
+@app.route('/Recherche')
+def recherche():
+  return render_template('recherche.html')
+
+@app.route('/Stages')
+def stages():
+  return render_template('stages.html') 
+
+
 
 @app.route('/test')
 def test():
