@@ -8,6 +8,7 @@ with open('data.json') as js:
     DATA = json.load(js)
     DICO_STAGES = DATA.get('DICO_STAGES')
     MOTS_CLES = DATA.get('MOTS_CLES')
+    GROUPES_MOTS_CLES = DATA.get('GROUPES_MOTS_CLES')
 
 def get_mots_cles(s_id):
     for mots_cles, ids in MOTS_CLES.items():

@@ -8,6 +8,7 @@ from flask import request, make_response
 from flask import render_template
 from data import DICO_STAGES
 from data import MOTS_CLES
+from data import GROUPES_MOTS_CLES
 
 app = Flask(__name__)
 
@@ -66,7 +67,7 @@ def about():
 
 @app.route('/Recherche')
 def recherche():
-  return render_template('recherche.html')
+  return render_template('recherche.html',Clefs=list(MOTS_CLES.keys()))
 
 
 @app.route('/search/', methods=['GET'])

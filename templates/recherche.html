@@ -2,11 +2,24 @@
 
 {% block content %}
 
-<h1>Recherche Simple</h1>
+
+<h1 class="mt-5">Recherche Simple</h1>
 
   <form class="form-inline mt-2 mt-md-0" method="get" action="/search/">
-    <input class="form-control mr-sm-2" placeholder="Search" aria-label="Search" type="text" name="pattern">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
+    <input class="form-control mr-sm-2" placeholder="" aria-label="Search" type="text" name="pattern">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
   </form>
 
+<h1 class="mt-1">liste des mots clefs</h1>
+	{{Clefs}}
+<ul style="list-style-type:circle;">
+      {% for clef in Clefs %}
+          <li>  {{clef}} </li> 
+      {% endfor %}
+</ul>
+
+
+
+
+<h1 class="mt-5">Recherche Avancée</h1>
 {% endblock %}
