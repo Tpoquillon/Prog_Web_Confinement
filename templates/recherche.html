@@ -10,14 +10,25 @@
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
   </form>
 
-	<h2 class="mt-5">Recherche par mot clef</h2>
-	  <SELECT name="Mot clefs" multiple=T size="4">
-	    {% for clef in Clefs %}
-          	<OPTION> {{clef}}
-    	    {% endfor %}
+
+<h2 class="mt-5">Recherche par mot clef</h2>
+
+	<i>Vous pouvez sellectionnez plusieurs mots clefs avec la touche "Ctrl" par exemple</i>
+
+
+  <form class="form-inline mt-2 mt-md-0" method="get" action="/keysearch/">
+	<SELECT name="Mot_clef" multiple=T size="4" id="multiselect">
+	{% for groupe in Groupeskeys %}
+		<optgroup label={{groupe}}>
+	    	{% for clef in Groupes[groupe] %}
+          		<OPTION value = "{{clef}}"> {{clef}}
+    	    	{% endfor %}
+	{% endfor %}
 	    
-	  </SELECT>
-    <FORM>
+	</SELECT>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+  </form>
+	  
 
 
 
