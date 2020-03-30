@@ -193,7 +193,7 @@
     "GROUPES_MOTS_CLES" : {
       "Type" : ["Académique","Entreprise"],
       "Duree": ["3 mois","4 mois","5 mois","6 mois","6+ mois"],
-      "Annee": ["4BIM","4BB","5BIM","5BB"],
+      "Annee": ["4 BIM","4 BB","5 BIM","5 BB"],
       "Thématique":["Bio-informatique","Equations différentielles","Epidémiologie","Biostatistiques","Intelligence Artificielle","Physiologie","Développement logiciel","Anglais","Biologie Cellulaire","Cristallographie","HPC Déploiement","Pharmacologie"],
       "Lieux":["France","Etranger"]
     }
