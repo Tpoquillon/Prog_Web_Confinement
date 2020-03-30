@@ -70,9 +70,14 @@ def recherche():
   return render_template('recherche.html',Clefs=list(MOTS_CLES.keys()))
 
 
-@app.route('/search/', methods=['GET'])
-def search():
-  return render_template('stages.html') 
+@app.route('/namesearch/', methods=['GET'])
+def namesearch():
+  New_List=[]
+  for stage in [DICO_STAGES[i] for i in range(len(DICO_STAGES))]:
+      if request.args['pattern'].lower() in stage["sujet_stage"].lower():
+        New_List.append(stage)
+  return render_template('stages.html',liste_stages=New_List)
+
 
 @app.route('/Stages', methods=['GET','POST'])
 @app.route('/Stages/<stage_id>/', methods=['GET'])
