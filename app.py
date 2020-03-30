@@ -78,7 +78,9 @@ def search():
 def stages(stage_id=None):
   if not stage_id:
     return render_template('stages.html',liste_stages=DICO_STAGES) 
-
+  elif stage_id in [DICO_STAGES[i]["id"] for i in range(len(DICO_STAGES))]:
+    index = [DICO_STAGES[i]["id"] for i in range(len(DICO_STAGES))].index(stage_id)
+    return render_template('stage.html', stage=DICO_STAGES[index])
 
 
 @app.route('/test')

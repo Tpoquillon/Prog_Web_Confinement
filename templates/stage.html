@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mt-5">{{stage["sujet_stage"]}}</h1>
+      <ul>
+        {% for key in stage.keys() %}
+          {% if key!='id' %}
+          <li> {{key}} : {{user[key]}} </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+{% endblock %}
