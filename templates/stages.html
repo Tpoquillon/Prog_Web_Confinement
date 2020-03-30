@@ -9,6 +9,8 @@
 
 <ul style="list-style-type:circle;">
       {% for stage in liste_stages %}
+<li><a href="/stages/{{stage.id}}">{{ stage.sujet_stage }}</a></li> 
+<li><a href="/stages/{{stage.id}}">{{ stage.sujet_stage }}</a></li> 
           <li><a href="/stages/{{stage.id}}">{{ stage.sujet_stage }}</a></li> 
       {% endfor %}
 </ul>

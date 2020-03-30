@@ -4,7 +4,7 @@
 from datetime import datetime
 
 from flask import Flask
-from flask import request, make_response
+from flask import abort, request, make_response
 from flask import render_template
 from data import DICO_STAGES
 from data import MOTS_CLES
@@ -80,13 +80,17 @@ def namesearch():
 
 
 @app.route('/Stages', methods=['GET','POST'])
-@app.route('/Stages/<stage_id>/', methods=['GET'])
+@app.route('/stages/<stage_id>/', methods=['GET'])
 def stages(stage_id=None):
+  
   if not stage_id:
     return render_template('stages.html',liste_stages=DICO_STAGES) 
-  elif stage_id in [DICO_STAGES[i]["id"] for i in range(len(DICO_STAGES))]:
-    index = [DICO_STAGES[i]["id"] for i in range(len(DICO_STAGES))].index(stage_id)
+  elif int(stage_id) in [int(DICO_STAGES[i]["id"] )for i in range(len(DICO_STAGES))]:
+    index = [int(DICO_STAGES[i]["id"])for i in range(len(DICO_STAGES))].index(int(stage_id))
     return render_template('stage.html', stage=DICO_STAGES[index])
+  app.logger.debug(stage_id)
+  app.logger.debug([DICO_STAGES[i]["id"] for i in range(len(DICO_STAGES))])
+  abort(404)
 
 
 @app.route('/test')
