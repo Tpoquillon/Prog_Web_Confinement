@@ -79,7 +79,7 @@ def search():
 def stages(stage_id=None):
   
   if not stage_id:
-    return render_template('stages.html',liste_stages=DICO_STAGES) 
+    return render_template('stages.html',liste_stages=DICO_STAGES,mots_cles=MOTS_CLES) 
   elif int(stage_id) in [int(DICO_STAGES[i]["id"] )for i in range(len(DICO_STAGES))]:
     index = [int(DICO_STAGES[i]["id"])for i in range(len(DICO_STAGES))].index(int(stage_id))
     return render_template('stage.html', stage=DICO_STAGES[index])

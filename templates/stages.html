@@ -9,9 +9,17 @@
 
 <ul style="list-style-type:circle;">
       {% for stage in liste_stages %}
-<li><a href="/stages/{{stage.id}}">{{ stage.sujet_stage }}</a></li> 
-<li><a href="/stages/{{stage.id}}">{{ stage.sujet_stage }}</a></li> 
-          <li><a href="/stages/{{stage.id}}">{{ stage.sujet_stage }}</a></li> 
+{% if (stage.id in mots_cles["4 BIM"]) or  (stage.id in mots_cles["5 BIM"]) %}
+<font color ="purple">
+<li><a href="/stages/{{stage.id}}">{{ stage.sujet_stage }}</a></li>
+</font>
+{%endif%} 
+{% if (stage.id in mots_cles["4 BB"]) or (stage.id in mots_cles["5 BB"]) %}
+<font color ="green">
+<li><a href="/stages/{{stage.id}}">{{ stage.sujet_stage }}</a></li>
+</font>
+{%endif%} 
+
       {% endfor %}
 </ul>
 {% endblock %}
