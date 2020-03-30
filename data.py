@@ -1,9 +1,4 @@
 # coding: utf-8
-"""App data
-
-Get wiki page ID: https://en.wikipedia.org/w/api.php?action=query&format=json&titles=Page%20Title
-Get a thumbnail : https://en.wikipedia.org/w/api.php?action=query&titles=Alan%20Turing&prop=pageimages&format=json&pithumbsize=100
-"""
 
 import json
 
@@ -11,17 +6,17 @@ from datetime import date, datetime
 
 with open('data.json') as js:
     DATA = json.load(js)
-    USERS = DATA.get('USERS')
-    FIELDS = DATA.get('FIELDS')
+    DICO_STAGES = DATA.get('DICO_STAGES')
+    MOTS_CLES = DATA.get('MOTS_CLES')
 
-def get_fields(u_id):
-    for field, ids in FIELDS.items():
-        if u_id in ids:
-            yield field
+def get_mots_cles(s_id):
+    for mots_cles, ids in MOTS_CLES.items():
+        if s_id in ids:
+            yield mots_cles
 
 
-for user in USERS:
-    user.update({'fields': [f for f in get_fields(user.get('id'))]})
+for dico in DICO_STAGES:
+    dico.update({'MOTS_CLES': [f for f in get_mots_cles(dico.get('id'))]})
 
 # Script starts here
 if __name__ == '__main__':
