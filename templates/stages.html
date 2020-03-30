@@ -2,6 +2,13 @@
 
 {% block content %}
 
-<h1>Page des Stages </h1>
+
+<h1 class="mt-5">Stages</h1>
+
+<p class="lead"> Ci-dessous se trouve la liste des stages par ordre d'ajout. Pour une recherche plus avancée, utilise le bouton Recherche en haut à droite </p> 
+
+      {% for stage in liste_stages %}
+          <!--  <li><a href="/stages/{{stage.id}}">{{ stage.sujet_stage }}</a></li>   -->!
+      {% endfor %}
 
 {% endblock %}

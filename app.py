@@ -7,6 +7,7 @@ from flask import Flask
 from flask import request, make_response
 from flask import render_template
 
+
 app = Flask(__name__)
 
 
@@ -71,10 +72,10 @@ def recherche():
 def search():
   return render_template('stages.html') 
 
-
-@app.route('/Stages')
+@app.route('/Stages', methods=['GET','POST'])
+@app.route('/Stages/<stage_id>/', methods=['GET'])
 def stages():
-  return render_template('stages.html') 
+  return render_template('stages.html')
 
 
 
