@@ -10,6 +10,15 @@
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
   </form>
 
+	<h2 class="mt-5">Recherche par mot clef</h2>
+	  <SELECT name="Mot clefs" multiple=T size="4">
+	    {% for clef in Clefs %}
+          	<OPTION> {{clef}}
+    	    {% endfor %}
+	    
+	  </SELECT>
+    <FORM>
+
 
 
 
