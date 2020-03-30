@@ -6,7 +6,8 @@ from datetime import datetime
 from flask import Flask
 from flask import request, make_response
 from flask import render_template
-
+from data import DICO_STAGES
+from data import MOTS_CLES
 
 app = Flask(__name__)
 
@@ -74,8 +75,9 @@ def search():
 
 @app.route('/Stages', methods=['GET','POST'])
 @app.route('/Stages/<stage_id>/', methods=['GET'])
-def stages():
-  return render_template('stages.html')
+def stages(stage_id=None):
+  if not stage_id:
+    return render_template('stages.html',liste_stages=DICO_STAGES) 
 
 
 
