@@ -107,24 +107,40 @@ def stages(stage_id=None):
   app.logger.debug(stage_id)
   app.logger.debug([DICO_STAGES[i]["id"] for i in range(len(DICO_STAGES))])
   abort(404)
+"""
+@app.route('/Stages', methods=['GET','POST'])
+def new_stage():
+    if methods ==['POST']:
+        name = request.form['name']
+        sujet_stage = request.form['sujet_stage']
+        structure = request.form['structure']
+        ville = request.form['ville']
+        pays = request.form['pays']
+        nom_eleve = request.form['nom_eleve']
+        mail_eleve = request.form['mail_eleve']
+        nom_contact = request.form['nom_contact']
+        mail_contact = request.form['mail_contact']
+        mail_eleve = request.form['mail_eleve']
+    #    type_stage = request.form['Type']
+    #    filiere = request.form['filiere']
+        i = len(DICO_STAGES)
+        new_dico={"id": i,
+         "sujet_stage": sujet_stage, "structure": structure, "ville": ville, 
+         "pays": pays, "nom_eleve": nom_eleve , 
+         "mail_eleve": mail_eleve, "nom_contact": nom_contact, 
+         "mail_contact": mail_contact, "description": 
+         description}
+        DICO_STAGES.append(new_dico)
 
-#@app.route('/Stages', methods=['GET','POST'])
-#def new_stage():
-#    name = request.form['name']
-#    sujet_stage = request.form['sujet_stage']
-#    structure = request.form['structure']
-#    ville = request.form['ville']
-#    pays = request.form['pays']
-#    structure = request.form['structure']
-#    structure = request.form['structure']
-    int i
-    new_dico={"id": i,
-     "sujet_stage": sujet_stage, "structure": structure, "ville": ville, 
-     "pays": pays, "nom_eleve": nom_eleve , 
-     "mail_eleve": mail_eleve, "nom_contact": nom_contact, 
-     "mail_contact": mail_contact, "description": 
-     description}
-    DICO_STAGES.append(new_dico)
+    #    if type_stage == "Académique" : 
+    #        MOTS_CLES["Académique"].append(i)
+    #    if type_stage == "Entreprise" : 
+    #        MOTS_CLES["Entreprise"].append(i)
+    #    if
+    print (DICO_STAGES[len(DICO_STAGES)-1]) 
+    return render_template('stages.html',liste_stages=DICO_STAGES)
+"""        
+
     
 
 @app.route('/test')
