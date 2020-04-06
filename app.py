@@ -92,7 +92,7 @@ def keysearch():
   New_list=[]
   for id in Id_List:
     New_list.append(DICO_STAGES[id])
-  return render_template('stages.html',liste_stages=New_list)
+  return render_template('stages.html',liste_stages=New_list,mots_cles=MOTS_CLES)
 
 
 @app.route('/Stages', methods=['GET','POST'])
