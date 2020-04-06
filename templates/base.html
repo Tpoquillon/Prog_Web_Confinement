@@ -46,10 +46,13 @@
               <a class="nav-link disabled">|</a>
             </li>
             <li style="float:right" >
-              <a href="{{ url_for('recherche') }}">Recherche</a>
+              <a href="{{ url_for('recherche') }}">Recherche Avancée</a>
             </li>
           </ul>
-        
+         <form class="form-inline mt-2 mt-md-0" method="get" action="/namesearch/">
+            <input class="form-control mr-sm-2" placeholder="Recherche" aria-label="" type="text" name="pattern">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="Rechercher">Rechercher</button>
+        </form>
       </div>
 </header>
 <main role="main" class="container">
