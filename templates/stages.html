@@ -9,6 +9,8 @@
 
 <ul style="list-style-type:circle;">
       {% for stage in liste_stages %}
+<li><a href="/stages/{{stage.id}}">{{ stage.sujet_stage }}</a></li> 
+<li><a href="/stages/{{stage.id}}">{{ stage.sujet_stage }}</a></li> 
           <li><a href="/stages/{{stage.id}}">{{ stage.sujet_stage }}</a></li> 
       {% endfor %}
 </ul>
@@ -61,6 +63,16 @@
 			<option> 4 BIM
 			<option> 5 BB
 			<option> 5 BIM
+		</select>
+  </div>
+  <div class="form-example">
+    <label for="Type">Type de stage </label>
+		<select name="Annee" size=2>
+			<option> 3 mois
+			<option> 4 mois
+			<option> 5 mois
+			<option> 6 mois
+			<option> 6+ mois
 		</select>
   </div>
   <div class="form-example">

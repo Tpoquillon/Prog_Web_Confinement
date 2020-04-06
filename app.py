@@ -4,10 +4,11 @@
 from datetime import datetime
 
 from flask import Flask
-from flask import request, make_response
+from flask import abort, request, make_response
 from flask import render_template
 from data import DICO_STAGES
 from data import MOTS_CLES
+from data import GROUPES_MOTS_CLES
 
 app = Flask(__name__)
 
@@ -66,22 +67,49 @@ def about():
 
 @app.route('/Recherche')
 def recherche():
-  return render_template('recherche.html')
+  return render_template('recherche.html',Clefs=list(MOTS_CLES.keys()))
 
 
-@app.route('/search/', methods=['GET'])
-def search():
-  return render_template('stages.html') 
+@app.route('/namesearch/', methods=['GET'])
+def namesearch():
+  New_List=[]
+  for stage in [DICO_STAGES[i] for i in range(len(DICO_STAGES))]:
+      if request.args['pattern'].lower() in stage["sujet_stage"].lower():
+        New_List.append(stage)
+  return render_template('stages.html',liste_stages=New_List)
+
 
 @app.route('/Stages', methods=['GET','POST'])
-@app.route('/Stages/<stage_id>/', methods=['GET'])
+@app.route('/stages/<stage_id>/', methods=['GET'])
 def stages(stage_id=None):
+  
   if not stage_id:
     return render_template('stages.html',liste_stages=DICO_STAGES) 
-  elif stage_id in [DICO_STAGES[i]["id"] for i in range(len(DICO_STAGES))]:
-    index = [DICO_STAGES[i]["id"] for i in range(len(DICO_STAGES))].index(stage_id)
+  elif int(stage_id) in [int(DICO_STAGES[i]["id"] )for i in range(len(DICO_STAGES))]:
+    index = [int(DICO_STAGES[i]["id"])for i in range(len(DICO_STAGES))].index(int(stage_id))
     return render_template('stage.html', stage=DICO_STAGES[index])
+  app.logger.debug(stage_id)
+  app.logger.debug([DICO_STAGES[i]["id"] for i in range(len(DICO_STAGES))])
+  abort(404)
 
+#@app.route('/Stages', methods=['GET','POST'])
+#def new_stage():
+#    name = request.form['name']
+#    sujet_stage = request.form['sujet_stage']
+#    structure = request.form['structure']
+#    ville = request.form['ville']
+#    pays = request.form['pays']
+#    structure = request.form['structure']
+#    structure = request.form['structure']
+    int i
+    new_dico={"id": i,
+     "sujet_stage": sujet_stage, "structure": structure, "ville": ville, 
+     "pays": pays, "nom_eleve": nom_eleve , 
+     "mail_eleve": mail_eleve, "nom_contact": nom_contact, 
+     "mail_contact": mail_contact, "description": 
+     description}
+    DICO_STAGES.append(new_dico)
+    
 
 @app.route('/test')
 def test():
