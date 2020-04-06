@@ -170,7 +170,7 @@
     "4 mois": [1,8,14,23,24],
     "5 mois": [3,11,18,21],
     "6 mois":[4,5,9,12,13,20,22],
-    " 6+ mois":[7,15,19],
+    "6+ mois":[7,15,19],
     "4 BIM" : [2,11,14,15,23,24,25],
     "4 BB" : [0,1,8,16,17,18],
     "5 BIM" : [5,7,9,19,20,21,12],
@@ -193,7 +193,7 @@
     "GROUPES_MOTS_CLES" : {
       "Type" : ["Académique","Entreprise"],
       "Duree": ["3 mois","4 mois","5 mois","6 mois","6+ mois"],
-      "Annee": ["4BIM","4BB","5BIM","5BB"],
+      "Annee": ["4 BIM","4 BB","5 BIM","5 BB"],
       "Thématique":["Bio-informatique","Equations différentielles","Epidémiologie","Biostatistiques","Intelligence Artificielle","Physiologie","Développement logiciel","Anglais","Biologie Cellulaire","Cristallographie","HPC Déploiement","Pharmacologie"],
       "Lieux":["France","Etranger"]
     }
