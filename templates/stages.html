@@ -27,4 +27,135 @@ Les stages BIM sont en <font  color= #C70039  > rouge </font> et les stages BB e
 
       {% endfor %}
 </ul>
+
+<form action="/newstage/" method="post" class="form-example">
+  <div class="form-example">
+    <label for="sujet_stage">Entrez le sujet du stage : </label>
+    <input type="text" name="sujet_stage" id="sujet_stage" required>
+  </div>
+  <div class="form-example">
+    <label for="structure">Entrez le nom de la strucure où se déroule le stage : </label>
+    <input type="text" name="structure" id="structure" required>
+  </div>
+  <div class="form-example">
+    <label for="ville">Entrez la ville où se déroule le stage : </label>
+    <input type="text" name="ville" id="ville" required>
+  </div>
+  <div class="form-example">
+    <label for="pays">Entrez le pays où se déroule le stage : </label>
+    <input type="text" name="pays" id="pays" required>
+  </div>
+  <div class="form-example">
+    <label for="nom_eleve">Entrez vos nom et prénom (Prénom NOM) : </label>
+    <input type="text" name="nom_eleve" id="nom_eleve" required>
+  </div>
+  <div class="form-example">
+    <label for="mail_eleve">Entrez votre adresse mail: </label>
+    <input type="email" name="mail_eleve" id="mail_eleve" required>
+  </div>
+  <div class="form-example">
+    <label for="nom_contact">Entrez les nom et prénom du contact de la structure (Prénom NOM) : </label>
+    <input type="text" name="nom_contact" id="nom_contact" required>
+  </div>
+  <div class="form-example">
+    <label for="mail_contact">Entrez le mail du contact de la structure: </label>
+    <input type="email" name="mail_contact" id="mail_contact" required>
+  </div>
+  <div class="form-example">
+    <label for="Type">Type de stage </label>
+<select name="Type" size=2>
+	<option> Académique
+	<option> Entreprise
+</select>
+  </div>
+  <div class="form-example">
+    <label for="filiere"> Filière et année </label>
+		<select name="Annee" size=2>
+			<option> 4 BB
+			<option> 4 BIM
+			<option> 5 BB
+			<option> 5 BIM
+		</select>
+  </div>
+  <div class="form-example">
+    <label for="duree">Durée du stage </label>
+		<select name="Annee" size=2>
+			<option> 3 mois
+			<option> 4 mois
+			<option> 5 mois
+			<option> 6 mois
+			<option> 6+ mois
+		</select>
+  </div>
+  <div class="form-example">
+    <label for="Thématique">Thématique(s) du stage </label>
+<div>
+  <input type="checkbox" id="Bio-informatique" name="Bio-informatique">
+  <label for="Bio-informatique">Bio-informatique</label>
+</div>
+
+<div>
+  <input type="checkbox" id="Equations différentielles" name="Equations différentielles">
+  <label for="Equations différentielles">Equations différentielles</label>
+</div>
+<div>
+  <input type="checkbox" id="Epidémiologie" name="Epidémiologie">
+  <label for="Epidémiologie">Epidémiologie</label>
+</div>
+<div>
+  <input type="checkbox" id="Biostatistiques" name="Biostatistiques"
+         checked>
+  <label for="Biostatistiques">Biostatistiques</label>
+</div>
+<div>
+  <input type="checkbox" id="Intelligence Artificielle" name="Intelligence Artificielle">
+  <label for="Intelligence Artificielle">Intelligence Artificielle</label>
+</div>
+<div>
+  <input type="checkbox" id="Physiologie" name="Physiologie">
+  <label for="Physiologie">Physiologie</label>
+</div>
+<div>
+  <input type="checkbox" id="Développement logiciel" name="Développement logiciel">
+  <label for="Développement logiciel">Développement logiciel</label>
+</div>
+<div>
+  <input type="checkbox" id="Anglais" name="Anglais"
+         checked>
+  <label for="Anglais">Anglais</label>
+</div>
+<div>
+  <input type="checkbox" id="Biologie Cellulaire" name="Biologie Cellulaire"
+         >
+  <label for="Biologie Cellulaire">Biologie Cellulaire</label>
+</div>
+<div>
+  <input type="checkbox" id="Cristallographie" name="Cristallographie"
+         >
+  <label for="Cristallographie">Cristallographie</label>
+</div>
+<div>
+  <input type="checkbox" id="HPC Déploiement" name="HPC Déploiement"
+         >
+  <label for="HPC Déploiement">HPC Déploiement</label>
+</div>
+<div>
+  <input type="checkbox" id="Pharmacologie" name="Pharmacologie"
+         >
+  <label for="Pharmacologie">Pharmacologie</label>
+</div>
+
+
+<div class="form-example">
+ <label for="description">Décrivez votre stage en quelques lignes: </label>
+
+
+	<input type="textarea" name="description" id="description"rows = "10" cols="30" required>
+</input>
+  </div>
+
+  <div class="form-example">
+    <input type="submit" value="Ajouter">
+  </div>
+</form>
 {% endblock %}

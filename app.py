@@ -113,6 +113,54 @@ def stages(stage_id=None):
   app.logger.debug([DICO_STAGES[i]["id"] for i in range(len(DICO_STAGES))])
   abort(404)
 
+@app.route('/Stages')
+@app.route('/newstage/', methods=['GET','POST'])
+def new_stage():
+    if request.method=='POST' : 
+        name = request.form.get('name')
+        sujet_stage = request.form.get('sujet_stage')
+        structure = request.form.get('structure')
+        ville = request.form.get('ville')
+        pays = request.form.get('pays')
+        nom_eleve = request.form.get('nom_eleve')
+        mail_eleve = request.form.get('mail_eleve')
+        nom_contact = request.form.get('nom_contact')
+        mail_contact = request.form.get('mail_contact')
+        mail_eleve = request.form.get('mail_eleve')
+        description = request.form.get('description')
+        type_stage = request.form.get('Type')
+        filiere = request.form.get('filiere')
+
+        i = len(DICO_STAGES)
+        new_dico={"id": i,
+             "sujet_stage": sujet_stage, "structure": structure, "ville": ville, 
+             "pays": pays, "nom_eleve": nom_eleve , 
+             "mail_eleve": mail_eleve, "nom_contact": nom_contact, 
+             "mail_contact": mail_contact, "description": 
+             description}
+        DICO_STAGES.append(new_dico)
+
+        if type_stage == "Académique" : 
+            MOTS_CLES["Académique"].append(i)
+        if type_stage == "Entreprise" : 
+            MOTS_CLES["Entreprise"].append(i)
+        if filiere in MOTS_CLES : 
+            MOTS_CLES[filiere].append(i)
+        if pays == 'France' :
+            MOTS_CLES['France'].append(i)
+        else :
+              MOTS_CLES['Etranger'].append(i) 
+        for checkbox in  "Bio-informatique","Equations différentielles", "Epidémiologie","Biostatistiques","Intelligence Artificielle","Physiologie","Développement logiciel","Anglais","Biologie Cellulaire","Cristallographie","HPC Déploiement","Pharmacologie":
+            value = request.form.get(checkbox)
+            if value in MOTS_CLES : 
+                MOTS_CLES[value].append(i)
+        
+        print (DICO_STAGES[len(DICO_STAGES)-1]) 
+        return render_template('stages.html',liste_stages=DICO_STAGES,mots_cles=MOTS_CLES)
+    app.logger.debug(request)
+    return 'ok'          
+
+    
 
 @app.route('/test')
 def test():
