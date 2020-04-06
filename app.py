@@ -67,7 +67,7 @@ def about():
 
 @app.route('/Recherche')
 def recherche():
-  return render_template('recherche.html',Clefs=list(MOTS_CLES.keys()))
+  return render_template('recherche.html',Groupeskeys=list(GROUPES_MOTS_CLES.keys()),Groupes=GROUPES_MOTS_CLES)
 
 
 @app.route('/namesearch/', methods=['GET'])
@@ -77,6 +77,22 @@ def namesearch():
       if request.args['pattern'].lower() in stage["sujet_stage"].lower():
         New_List.append(stage)
   return render_template('stages.html',liste_stages=New_List,mots_cles=MOTS_CLES)#on passe tout le dico de mots clés pour pouvoir faire de l'affichage slon BIM/BB
+
+@app.route('/keysearch/', methods=['GET'])
+def keysearch():
+  app.logger.debug(request)
+  app.logger.debug(request.args.getlist("Mot_clef"))
+  keylist=request.args.getlist("Mot_clef")
+  Id_set=set([i for i in range(len(DICO_STAGES))])
+  for key in keylist:
+    Id_set=Id_set & set(MOTS_CLES[key])
+  Id_List = list(Id_set)
+  app.logger.debug(Id_List)
+  Id_List.sort()
+  New_list=[]
+  for id in Id_List:
+    New_list.append(DICO_STAGES[id])
+  return render_template('stages.html',liste_stages=New_list)
 
 
 @app.route('/Stages', methods=['GET','POST'])

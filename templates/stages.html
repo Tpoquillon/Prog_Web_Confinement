@@ -4,9 +4,10 @@
 
 
 <h1 class="mt-5">Stages</h1>
-
-<p class="lead"> Ci-dessous se trouve la liste des stages par ordre d'ajout. Pour une recherche plus avancée, utilise le bouton Recherche en haut à droite </p> 
-
+<div class="alert alert-primary" role="alert">
+<h4 class="nocount""> Ci-dessous se trouve la liste des stages par ordre d'ajout. Pour une recherche plus avancée, utilise le bouton Recherche en haut à droite </h4> 
+</div>
+  <hr />
 <ul style="list-style-type:circle;">
       {% for stage in liste_stages %}
 {% if (stage.id in mots_cles["4 BIM"]) or  (stage.id in mots_cles["5 BIM"]) %}
