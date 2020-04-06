@@ -13,9 +13,9 @@
 <h1 class="mt-5">Recherche par mot clef</h1>
 <div class="alert alert-primary" role="alert">
 <h4 class="nocount""> Vous pouvez séléctionner les différents mots clefs pour afficher uniquement les stages qui les contiennent. Plus vous indiquez de mot clefs, plus la recherche sera précise et moins vous aurez de résultats.   </h4> 
+<i>Il est possible de selectionner plusieurs mots d'une même catégorie à l'aide de la touche "Ctrl" </i> 
 </div>
 
-<i>Il est possible de selectionner plusieurs mots d'une même catégorie à l'aide de la touche "Ctrl" </i> <br> <br> <br>
 
 	{% for groupe in Groupeskeys %}
   		<form class="form-inline mt-2 mt-md-0" method="get" action="/keysearch/">
@@ -31,6 +31,8 @@
 	&nbsp &nbsp &nbsp
 	{% endfor %}
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+	&nbsp &nbsp &nbsp
+    <button class="btn btn-outline-success my-2 my-sm-0" type="reset">Réinitialiser</button>
   </form>
 	  
 
