@@ -116,6 +116,7 @@ def stages(stage_id=None):
 @app.route('/Stages')
 @app.route('/newstage/', methods=['GET','POST'])
 def new_stage():
+    app.logger.debug(request.form) 
     if request.method=='POST' : 
         name = request.form.get('name')
         sujet_stage = request.form.get('sujet_stage')
@@ -129,8 +130,8 @@ def new_stage():
         mail_eleve = request.form.get('mail_eleve')
         description = request.form.get('description')
         type_stage = request.form.get('Type')
-        filiere = request.form.get('filiere')
-
+        filiere = request.form.get('Annee')
+        durée = request.form.get("Duree")
         i = len(DICO_STAGES)
         new_dico={"id": i,
              "sujet_stage": sujet_stage, "structure": structure, "ville": ville, 
@@ -138,7 +139,7 @@ def new_stage():
              "mail_eleve": mail_eleve, "nom_contact": nom_contact, 
              "mail_contact": mail_contact, "description": 
              description}
-        DICO_STAGES.append(new_dico)
+        Keys=[type_stage,filiere,durée,pays]
 
         if type_stage == "Académique" : 
             MOTS_CLES["Académique"].append(i)
@@ -152,10 +153,15 @@ def new_stage():
               MOTS_CLES['Etranger'].append(i) 
         for checkbox in  "Bio-informatique","Equations différentielles", "Epidémiologie","Biostatistiques","Intelligence Artificielle","Physiologie","Développement logiciel","Anglais","Biologie Cellulaire","Cristallographie","HPC Déploiement","Pharmacologie":
             value = request.form.get(checkbox)
-            if value in MOTS_CLES : 
-                MOTS_CLES[value].append(i)
+            if value == "on" :
+                Keys.append(checkbox)
+                MOTS_CLES[checkbox].append(i)
+        DICO_STAGES.append(new_dico)
         
-        print (DICO_STAGES[len(DICO_STAGES)-1]) 
+        app.logger.debug(print(len(DICO_STAGES)-1))        
+        app.logger.debug(print (MOTS_CLES))         
+        app.logger.debug(print (DICO_STAGES[len(DICO_STAGES)-1]))
+        new_dico.update({'MOTS_CLES':Keys})
         return render_template('stages.html',liste_stages=DICO_STAGES,mots_cles=MOTS_CLES)
     app.logger.debug(request)
     return 'ok'          

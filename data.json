@@ -43,7 +43,7 @@
      "mail_contact": "Durand@yahoo.fr", "description": 
      "Prenez un roman de quelques pages seulement, histoire que l'élève de première ne s'affole pas au premier abord. Remplissez les 25 premières pages d'un bonne centaine de personnage, sans en privilégier un sur les autres. Puis ne garder que les 3 personnages de l'histoire, à savoir une jeune fille fade et très niaise, une mère atroce et l'amour de la jeune fille pour qui jamais elle n'avouera quoi que ce soit et on le sait déjà à l'avance parce qu'on a prévu de la marié à un vieux chnoc et elle se rebellera pas et l'histoire a pas d'intérêt et le livre paraît très long alors que ce sera le plus court qu'ils auront à lire, mais le plus dur à comprendre, et surtout à apprécier."},
     {"id":7,
-     "sujet_stage": "Les effets de l'agent orange sur l'organisme", "structure": "Hochimin-univ", "ville": "Hanoï",
+     "sujet_stage": "Les effets de l'agent orange sur l'orgasme", "structure": "Hochimin-univ", "ville": "Hanoï",
      "pays": "Vietnam", "nom_eleve": "Huynh Huu Tanh Traa" , 
      "mail_eleve": "Huynh@yahoo.fr", "nom_contact": "Bui Hai", 
      "mail_contact": "Bui_hai@yahoo.fr", "description": 
@@ -172,7 +172,7 @@
     "6 mois":[4,5,9,12,13,20,22],
     "6+ mois":[7,15,19],
     "4 BIM" : [2,11,14,15,23,24,25],
-    "4 BB" : [0,1,8,16,17,18],
+    "4 BB" : [0,1,6,8,16,17,18],
     "5 BIM" : [5,7,9,19,20,21,12],
     "5 BB" : [3,4,10,22,26,13],
     "Bio-informatique" : [1,4,7,11,12,13],
