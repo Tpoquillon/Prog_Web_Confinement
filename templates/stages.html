@@ -5,21 +5,23 @@
 
 <h1 class="mt-5">Stages</h1>
 <div class="alert alert-primary" role="alert">
-<h4 class="nocount""> Ci-dessous se trouve la liste des stages par ordre d'ajout. Utilise le bouton "Recherche" en haut à droite (recherche par mots dans le titre), ou vas sur la  page "Recherche avancée" .</h4> 
-Les stages BIM sont en <font color ="purple"> violet</font> et les stages BB en <font color ="green"> vert </font>.
+<h4 class="nocount""> Ci-dessous se trouve la liste des stages par ordre d'ajout. Utilise le bouton "Recherche" en haut à droite (recherche par mots dans le titre), ou va sur la  page "Recherche avancée" .</h4> 
+
 </div>
+
+Les stages BIM sont en <font  color= #C70039  > rouge </font> et les stages BB en <font color =  #0ab0ba   > bleu </font>.
   <hr />
 
 <ul style="list-style-type:circle;">
       {% for stage in liste_stages %}
 {% if (stage.id in mots_cles["4 BIM"]) or  (stage.id in mots_cles["5 BIM"]) %}
-<font color ="purple">
-<li><a href="/stages/{{stage.id}}" style="background-color: #ddc1e8 ">{{ stage.sujet_stage }} </a></li>
+<font color =#C70039 >
+<li><a href="/stages/{{stage.id}}" style="color:  rgb(199,0, 57 ,1) ">{{ stage.sujet_stage }} </a></li>
 </font>
 {%endif%} 
 {% if (stage.id in mots_cles["4 BB"]) or (stage.id in mots_cles["5 BB"]) %}
-<font color ="green">
-<li><a href="/stages/{{stage.id}}" style="background-color:  #c2eb91  ">{{ stage.sujet_stage }}</a></li>
+<font color =  #0ab0ba>
+<li><a href="/stages/{{stage.id}}" style="color:   #0ab0ba  ">{{ stage.sujet_stage }}</a></li>
 </font>
 {%endif%} 
 

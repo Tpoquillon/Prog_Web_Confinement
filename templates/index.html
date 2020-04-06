@@ -3,7 +3,6 @@
 {% block content %}
 <h1>Accueil</h1>
 
-<p class='lead'>Bienvenue sur StageBook !</p>
 
  <article id="intro" class="to_hide">
     <div><hr /></div>
@@ -15,6 +14,25 @@
     <div class="alert alert-dark hr">
       <p>Le site s'articule en 5 pages. Vous vous trouvez actuellement sur l'index, c'est-à-dire la page d'accueil. D'ici sont accessibles les pages <a href="{{ url_for('about') }}">"A Propos"</a>, <a href="{{ url_for('stages') }}">"Stages"</a>, et <a href="{{ url_for('recherche') }}">"Recherche Avancée"</a>. </p>
       </div>
+    <h3 class=nocount>Stages</h3>
+    <div class="alert alert-dark">
+    <p> Cette page liste tous les stages de la base de données, avec un code couleur selon qu'ils soient adressés aux BIM ou aux BB. Chaque stage a sa propre page, accessible en cliquant sur le lien.  </p>
+    </div>
+    
+    <h3 class=nocount>Page de présentation par stage</h3>
+    <div class="alert alert-dark">
+    <p> Chaque stage repertorié possède un certain nombre d'informations, listées ici. On retrouve le sujet, la structure d'accueil, la ville, le pays, l'élève ayant effectué le stage ainsi que son adresse mail. On peut aussi avoir accès au responsable du stage et à son adresse mail, à une description succinte du stage et à des mots clés. Ces derniers indiquent la durée, le caractère académique ou privé du stage, ainsi que les champs d'application. </p>
+        </div>
+        
+    <h3 class=nocount>Recherche avancée</h3>
+    <div class="alert alert-dark">
+    <p> En plus de la barre de recherche, cette page permet de trier les stages de la liste selon des critères qui correspondent aux mots-clés. Ainsi, l'utilisateur peut sélectionner un stage selon la fillière à laquelle il s'adresse, sa durée, ses champs d'application ou encore choisir un stage en France ou à l'étranger. </p>
+    </div>
+    
+    <h3 class=nocount>A propos</h3>
+    <div class="alert alert-dark">
+    <p> Cet onglet est destiné à la présentation des élèves ayant participé à la création de ce site. </p>
+    </div>
 
   </article>
 {% endblock %}

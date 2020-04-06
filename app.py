@@ -10,7 +10,9 @@ from data import DICO_STAGES
 from data import MOTS_CLES
 from data import GROUPES_MOTS_CLES
 
+from api import SITE_API
 app = Flask(__name__)
+app.register_blueprint(SITE_API)
 
 
 def deal_with_post():
