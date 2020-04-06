@@ -49,6 +49,9 @@ def index():
     app.logger.debug('serving root URL /')
     return render_template('index.html')
 
+@app.route('/API')
+def API():
+    return render_template('API.html')
 
 @app.route('/about')
 def about():

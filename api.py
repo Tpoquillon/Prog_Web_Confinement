@@ -20,8 +20,10 @@ def api(node0=None):
     if not node0:
       current_app.logger.debug('Looking at "{}" resource'.format(node0))
       abort(501)
-    elif node0 in ["stages","Stages"]:
+    elif node0 =="stages":
       return jsonify([DICO_STAGES[i]["sujet_stage"] for i in range(len(DICO_STAGES))])
+    elif node0 =="Stages":
+      return jsonify(DICO_STAGES)
     else:
       current_app.logger.debug('Looking at "{}" resource'.format(node0))
       abort(501)
