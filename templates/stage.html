@@ -4,8 +4,25 @@
       <ul>
         {% for key in stage.keys() %}
           {% if key!='id' %}
-          <li> {{key}} : {{stage[key]}} </li>
-          {% endif %}
+            {% if key=='sujet_stage'%}
+              <li> Sujet du stage : {{stage[key]}} </li>
+            {% endif %}
+            {% if key=='nom_eleve' %}
+              <li> Nom de l'élève : {{stage[key]}} </li>
+            {% endif %}
+            {% if key=='mail_eleve' %}
+              <li> Adresse e-mail de l'élève : {{stage[key]}} </li>
+            {% endif %}
+            {% if key=='nom_contact' %}
+              <li> contact : {{stage[key]}} </li>
+            {% endif %}
+            {% if key=='mail_eleve' %}
+              <li> Adresse e-mail du contact : {{stage[key]}} </li>
+            {% endif %}
+            {% if key=='MOTS_CLES' %}
+              <li> Mots clés : {{stage[key]}} </li>
+            {% endif %}
+          {% endif %} 
         {% endfor %}
       </ul>
 {% endblock %}
