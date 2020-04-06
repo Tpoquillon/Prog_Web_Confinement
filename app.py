@@ -76,7 +76,7 @@ def namesearch():
   for stage in [DICO_STAGES[i] for i in range(len(DICO_STAGES))]:
       if request.args['pattern'].lower() in stage["sujet_stage"].lower():
         New_List.append(stage)
-  return render_template('stages.html',liste_stages=New_List)
+  return render_template('stages.html',liste_stages=New_List,mots_cles=MOTS_CLES)#on passe tout le dico de mots clés pour pouvoir faire de l'affichage slon BIM/BB
 
 
 @app.route('/Stages', methods=['GET','POST'])
