@@ -2,37 +2,36 @@
 
 {% block content %}
 
-
+<!--
 <h2 class="mt-5">Recherche par sujet</h2>
 
   <form class="form-inline mt-2 mt-md-0" method="get" action="/namesearch/">
     <input class="form-control mr-sm-2" placeholder="" aria-label="Search" type="text" name="pattern">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
   </form>
+-->
+<h1 class="mt-5">Recherche par mot clef</h1>
+<div class="alert alert-primary" role="alert">
+<h4 class="nocount""> Vous pouvez séléctionner les différents mots clefs pour afficher uniquement les stages qui les contiennent. Plus vous indiquez de mot clefs, plus la recherche sera précise et moins vous aurez de résultats.   </h4> 
+</div>
 
+<i>Il est possible de selectionner plusieurs mots d'une même catégorie à l'aide de la touche "Ctrl" </i> <br> <br> <br>
 
-<h2 class="mt-5">Recherche par mot clef</h2>
-
-	<i>Vous pouvez sellectionnez plusieurs mots clefs avec la touche "Ctrl" par exemple</i>
-
-
-  <form class="form-inline mt-2 mt-md-0" method="get" action="/keysearch/">
-	<SELECT name="Mot_clef" multiple=T size="4" id="multiselect">
 	{% for groupe in Groupeskeys %}
-		<optgroup label={{groupe}}>
-	    	{% for clef in Groupes[groupe] %}
-          		<OPTION value = "{{clef}}"> {{clef}}
-    	    	{% endfor %}
-	{% endfor %}
+  		<form class="form-inline mt-2 mt-md-0" method="get" action="/keysearch/">
+			<SELECT name="Mot_clef" multiple=T size="4" id="multiselect">
+	
+			<optgroup label={{groupe}}>
+	    		{% for clef in Groupes[groupe] %}
+          			<OPTION value = "{{clef}}"> {{clef}}
+    	    		{% endfor %}
+
 	    
-	</SELECT>
+			</SELECT>
+	&nbsp &nbsp &nbsp
+	{% endfor %}
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
   </form>
 	  
 
-
-
-
-
-<h1 class="mt-5">Recherche Avancée</h1>
 {% endblock %}

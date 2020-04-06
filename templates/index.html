@@ -3,5 +3,18 @@
 {% block content %}
 <h1>Accueil</h1>
 
-<p>Bienvenue dans mon royaume, mortels! () j'ai pas pu m'en empécher</p>
+<p class='lead'>Bienvenue sur StageBook !</p>
+
+ <article id="intro" class="to_hide">
+    <div><hr /></div>
+    <h2 class="nocount">Qu'est-ce que ce site ? </h2>
+      <div class="alert alert-primary" role="alert">
+        <p> StageBook est un site web répertoriant les stages effectués par les élèves de Biosciences. Il est né d'une volonté de créer une base de données ressource facile d'accès pour les élèves lors de leur propre recherche.</p>
+      </div>
+    <h2 class=nocount>Architecture générale de la page</h2>
+    <div class="alert alert-dark hr">
+      <p>Le site s'articule en 5 pages. Vous vous trouvez actuellement sur l'index, c'est-à-dire la page d'accueil. D'ici sont accessibles les pages <a href="{{ url_for('about') }}">"A Propos"</a>, <a href="{{ url_for('stages') }}">"Stages"</a>, et <a href="{{ url_for('recherche') }}">"Recherche Avancée"</a>. </p>
+      </div>
+
+  </article>
 {% endblock %}
