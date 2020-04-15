@@ -6,6 +6,7 @@ from datetime import datetime
 from flask import Flask
 from flask import abort, request, make_response
 from flask import render_template
+import json 
 from data import DICO_STAGES
 from data import MOTS_CLES
 from data import GROUPES_MOTS_CLES
@@ -162,6 +163,9 @@ def new_stage():
         app.logger.debug(print (MOTS_CLES))         
         app.logger.debug(print (DICO_STAGES[len(DICO_STAGES)-1]))
         new_dico.update({'MOTS_CLES':Keys})
+        
+        dico=json.dumps(DICO_STAGES)
+        print(dico)
         return render_template('stages.html',liste_stages=DICO_STAGES,mots_cles=MOTS_CLES)
     app.logger.debug(request)
     return 'ok'          
