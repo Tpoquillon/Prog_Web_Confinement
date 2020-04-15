@@ -101,7 +101,7 @@
      "pays": "France", "nom_eleve": "Malo Terie" , 
      "mail_eleve": "Malo@yahoo.fr", "nom_contact": "Jean-Philippe Prairie", 
      "mail_contact": "JPP@yahoo.fr", "description": 
-     "Comme vous savez, elle tombe toujours du côté du beurre (beurre doux bien sûr, les vrais savent)."},
+     "Comme vous savez, elle tombe toujours du côté du beurre (doux bien sûr, on reste dans le respect de soi)."},
      {"id":17,
      "sujet_stage": "Le sticky toffee pudding et les périodes adéquates de dégustation", "structure": "Ecosse fanzouz", "ville": "Yeu",
      "pays": "France", "nom_eleve": "Yvan Plougarec" , 
@@ -125,7 +125,7 @@
      "pays": "France", "nom_eleve": "Camille Cludel" , 
      "mail_eleve": "cam@yahoo.fr", "nom_contact": "Olivier Carrussec", 
      "mail_contact": "oliv@yahoo.fr", "description": 
-     "Non tu ne te connecteras pas. C'est tes partiels ? Mais qu'est-ce que j'en ai à faire ?"},    
+     "Non, tu ne te connecteras pas. C'est tes partiels ? Mais qu'est-ce que j'en ai à faire ?"},    
      {"id":21,
      "sujet_stage": "La linéarisation prévoit des centres et autres mèmes de BIM", "structure": "IGV", "ville": "Le haut du moulin",
      "pays": "France", "nom_eleve": "Ausec Cours" , 
@@ -151,7 +151,7 @@
      "mail_contact": "delphi@yahoo.fr", "description": 
      "Faut occuper les vieux avec ce qu'on a, quoi."},
      {"id":25,
-     "sujet_stage": "Le téléphone avec mamie Danièle", "structure": "les écoutes du coeur", "ville": "Falou",
+     "sujet_stage": "Le téléphone avec mamie Andrée", "structure": "les écoutes du coeur", "ville": "Falou",
      "pays": "France", "nom_eleve": "Clotilde Didier" , 
      "mail_eleve": "clodi@yahoo.fr", "nom_contact": "Marie Poule", 
      "mail_contact": "mapoule@yahoo.fr", "description": 
