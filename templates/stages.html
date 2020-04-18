@@ -26,6 +26,10 @@ Les stages BIM sont en <font  color= #C70039  > rouge </font> et les stages BB e
 {%endif%} 
 
       {% endfor %}
+<form class="form-inline mt-2 mt-md-0" method="post" action="/api/telechargement?liste={% for stage in liste_stages%}{{stage.id}} {%endfor%}">
+
+<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Données JSON</button>
+</form>
 </ul>
 
 <div class="alert alert-primary" role="alert">

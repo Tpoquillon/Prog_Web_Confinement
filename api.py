@@ -17,13 +17,21 @@ SITE_API = Blueprint('api', __name__,)
 @SITE_API.route('/api')
 @SITE_API.route('/api/<string:node0>', methods=['GET'])
 def api(node0=None):
+  
+    current_app.logger.debug(node0)
     if not node0:
       current_app.logger.debug('Looking at "{}" resource'.format(node0))
       abort(501)
-    elif node0 =="stages":
-      return jsonify([DICO_STAGES[i]["sujet_stage"] for i in range(len(DICO_STAGES))])
-    elif node0 =="Stages":
-      return jsonify(DICO_STAGES)
     else:
       current_app.logger.debug('Looking at "{}" resource'.format(node0))
       abort(501)
+      
+@SITE_API.route('/api/telechargement', methods=['POST'])#télécharger les données d'un ou plusieurs stages au format json
+def telechargement():
+    req=request.args['liste']
+    req_list=req.split(" ")
+    index_list = list(map(int, req_list))
+    Stages={DICO_STAGES[i]["sujet_stage"]:DICO_STAGES[i] for i in index_list}
+    return jsonify(Stages)
+    
+    
