@@ -106,6 +106,7 @@ def keysearch():
 def stages(stage_id=None):
   
   if not stage_id:
+    print(MOTS_CLES)
     return render_template('stages.html',liste_stages=DICO_STAGES,mots_cles=MOTS_CLES) 
   elif int(stage_id) in [int(DICO_STAGES[i]["id"] )for i in range(len(DICO_STAGES))]:
     index = [int(DICO_STAGES[i]["id"])for i in range(len(DICO_STAGES))].index(int(stage_id))
@@ -162,10 +163,12 @@ def new_stage():
         app.logger.debug(print(len(DICO_STAGES)-1))        
         app.logger.debug(print (MOTS_CLES))         
         app.logger.debug(print (DICO_STAGES[len(DICO_STAGES)-1]))
-        new_dico.update({'MOTS_CLES':Keys})
         
-        dico=json.dumps(DICO_STAGES)
-        print(dico)
+        new_dico.update({'MOTS_CLES':Keys})
+        print(MOTS_CLES)
+        #with open ('data.json', 'w') as fd :    
+            #json.dump({"DICO_STAGES":DICO_STAGES,"MOTS_CLES" :MOTS_CLES,"GROUPES_MOTS_CLES" :GROUPES_MOTS_CLES},fd)
+        #print(dico)
         return render_template('stages.html',liste_stages=DICO_STAGES,mots_cles=MOTS_CLES)
     app.logger.debug(request)
     return 'ok'          
