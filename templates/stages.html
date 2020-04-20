@@ -4,8 +4,21 @@
 
 
 <h1 class="mt-5">Stages</h1>
-<div class="alert alert-primary" role="alert">
-<h4 class="nocount""> Ci-dessous se trouve la liste des stages par ordre d'ajout. Utilise le bouton "Recherche" en haut à droite (recherche par mots dans le titre), ou va sur la  page "Recherche avancée" .</h4> 
+
+
+{%if liste_stages|length ==0%}
+<div class="alert alert-secondary" role="alerte">
+<h4 class="nocount"">  Oups! Pas de stage correspondant à votre recherche dans la base de données. Essayez d'autres termes ! </h4> 
+</div>
+{%endif%}
+
+
+
+
+{% if liste_stages|length !=0%}
+<div class="alert alert-primary", role="alerte">
+<h4 class="nocount"">  Ci-dessous se trouve la liste des stages par ordre d'ajout. Utilise le bouton "Recherche" en haut à droite (recherche par mots dans le titre), ou va sur la  page "Recherche avancée" .</h4> 
+
 
 </div>
 
@@ -31,11 +44,12 @@ Les stages BIM sont en <font  color= #C70039  > rouge </font> et les stages BB e
 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Données JSON</button>
 </form>
 </ul>
+{%endif%}
 
 <div class="alert alert-primary" role="alert">
 <h4 class="nocount"">Ajouter un stage : </h4> 
 
-</div>
+
 <form action="/newstage/" method="post" class="form-example">
   <div class="form-example">
     <label for="sujet_stage">Entrez le sujet du stage : </label>
@@ -166,4 +180,5 @@ Les stages BIM sont en <font  color= #C70039  > rouge </font> et les stages BB e
     <input type="submit" value="Ajouter">
   </div>
 </form>
+</div>
 {% endblock %}
