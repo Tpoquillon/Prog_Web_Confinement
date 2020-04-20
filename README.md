@@ -1,4 +1,4 @@
-# Bobby : a bio-inspired optimization algorithm.
+# Recherche et gestion des stages dans la filière Biosciences
 
 <div style = "display: flex; justify-content: center;">
   <img src="/templates/logo_lama_2.png" height="250">
