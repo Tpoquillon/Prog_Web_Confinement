@@ -106,6 +106,7 @@ def keysearch():
 def stages(stage_id=None):
   
   if not stage_id:
+    print(MOTS_CLES)
     return render_template('stages.html',liste_stages=DICO_STAGES,mots_cles=MOTS_CLES) 
   elif int(stage_id) in [int(DICO_STAGES[i]["id"] )for i in range(len(DICO_STAGES))]:
     index = [int(DICO_STAGES[i]["id"])for i in range(len(DICO_STAGES))].index(int(stage_id))
@@ -119,6 +120,7 @@ def stages(stage_id=None):
 def new_stage():
     app.logger.debug(request.form) 
     if request.method=='POST' : 
+# We collect all the informations from the form to add a new internship
         name = request.form.get('name')
         sujet_stage = request.form.get('sujet_stage')
         structure = request.form.get('structure')
@@ -134,6 +136,7 @@ def new_stage():
         filiere = request.form.get('Annee')
         durée = request.form.get("Duree")
         i = len(DICO_STAGES)
+#Creation of the dictionary that'll be added in the DICO_STAGES list
         new_dico={"id": i,
              "sujet_stage": sujet_stage, "structure": structure, "ville": ville, 
              "pays": pays, "nom_eleve": nom_eleve , 
@@ -141,7 +144,7 @@ def new_stage():
              "mail_contact": mail_contact, "description": 
              description}
         Keys=[type_stage,filiere,durée,pays]
-
+#Same here with MOTS_CLES
         if type_stage == "Académique" : 
             MOTS_CLES["Académique"].append(i)
         if type_stage == "Entreprise" : 
@@ -158,14 +161,17 @@ def new_stage():
                 Keys.append(checkbox)
                 MOTS_CLES[checkbox].append(i)
         DICO_STAGES.append(new_dico)
-        
+#Update of the dictionaries from data.json (here : python objects)        
         app.logger.debug(print(len(DICO_STAGES)-1))        
         app.logger.debug(print (MOTS_CLES))         
         app.logger.debug(print (DICO_STAGES[len(DICO_STAGES)-1]))
-        new_dico.update({'MOTS_CLES':Keys})
         
-        dico=json.dumps(DICO_STAGES)
-        print(dico)
+        new_dico.update({'MOTS_CLES':Keys})
+
+#Here we write on the data.json file to update It with the new DICO_STAGES, MOTS_CLES and GROUPE_MOTS_CLES dictionaries/list
+        with open ('data.json', 'w') as fd :    
+           json.dump({"DICO_STAGES":DICO_STAGES,"MOTS_CLES" :MOTS_CLES,"GROUPES_MOTS_CLES" :GROUPES_MOTS_CLES},fd)
+
         return render_template('stages.html',liste_stages=DICO_STAGES,mots_cles=MOTS_CLES)
     app.logger.debug(request)
     return 'ok'          
