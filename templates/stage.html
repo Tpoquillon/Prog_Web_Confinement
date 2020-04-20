@@ -7,6 +7,15 @@
             {% if key=='sujet_stage'%}
               <li> Sujet du stage : {{stage[key]}} </li>
             {% endif %}
+	    {% if key=='structure' %}
+              <li> Structure d'accueil : {{stage[key]}} </li>
+            {% endif %}
+	    {% if key=='pays' %}
+              <li> Pays : {{stage[key]}} </li>
+            {% endif %}
+	    {% if key=='ville' %}
+              <li> Ville: {{stage[key]}} </li>
+            {% endif %}
             {% if key=='nom_eleve' %}
               <li> Nom de l'élève : {{stage[key]}} </li>
             {% endif %}
@@ -14,13 +23,16 @@
               <li> Adresse e-mail de l'élève : {{stage[key]}} </li>
             {% endif %}
             {% if key=='nom_contact' %}
-              <li> contact : {{stage[key]}} </li>
+              <li> Contact : {{stage[key]}} </li>
             {% endif %}
             {% if key=='mail_contact' %}
               <li> Adresse e-mail du contact : {{stage[key]}} </li>
             {% endif %}
             {% if key=='MOTS_CLES' %}
               <li> Mots clés : {{stage[key]}} </li>
+            {% endif %}
+	    {% if key=='description' %}
+              <li> Description : {{stage[key]}} </li>
             {% endif %}
           {% endif %} 
         {% endfor %}
